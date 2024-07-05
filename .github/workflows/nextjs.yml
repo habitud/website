@@ -8,5 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Install pnpm
+      - name: Installation de pnpm
         run: npm install -g pnpm
+        
+      - name: Installation des dépendences
+        run: pnpm install
