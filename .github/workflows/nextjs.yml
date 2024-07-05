@@ -10,6 +10,9 @@ jobs:
     steps:
       - name: Installation de pnpm
         run: npm install -g pnpm
+
+      - name: Navigate to project directory
+        run: cd website
         
       - name: Installation des dépendences
         run: pnpm install
