@@ -4,15 +4,19 @@ on:
   push:
     branches: ["main"]
 
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
       - name: Installation de pnpm
         run: npm install -g pnpm
-
-      - name: Navigate to project directory
-        run: ls
         
       - name: Installation des dépendences
         run: pnpm install
