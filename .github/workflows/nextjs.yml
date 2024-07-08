@@ -2,14 +2,13 @@ name: Déploiement
 
 on:
   push:
-    branches: ["feature/**"]
+    branches:
+      - "feature/**"
 
 jobs:
 
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -19,13 +18,19 @@ jobs:
         
       - name: Installation des dépendences
         run: pnpm install
-        
+
   test:
-
     runs-on: ubuntu-latest
-
+    needs: build  # Ensure that the 'test' job runs after the 'build' job completes
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
         
+      - name: Installation de pnpm
+        run: npm install -g pnpm  # You may skip this if pnpm is already installed in 'build'
+
+      - name: Installation des dépendences
+        run: pnpm install  # You may skip this if dependencies are already installed in 'build'
+
       - name: Tests unitaires
         run: pnpm test
-
