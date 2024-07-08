@@ -2,12 +2,10 @@ name: Déploiement
 
 on:
   push:
-    branches: ["main"]
+    branches: ["feature/**"]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout
         uses: actions/checkout@v4
         
@@ -16,6 +14,12 @@ jobs:
         
       - name: Installation des dépendences
         run: pnpm install
+        
+  test:
+    runs-on: ubuntu-latest
 
-      - name: Build
-        run: pnpm run build
+    steps:
+        
+      - name: Tests unitaires
+        run: pnpm test
+
