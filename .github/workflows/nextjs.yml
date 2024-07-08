@@ -6,14 +6,14 @@ on:
 
 jobs:
   build:
-      - name: Checkout
-        uses: actions/checkout@v4
-        
-      - name: Installation de pnpm
-        run: npm install -g pnpm
-        
-      - name: Installation des dépendences
-        run: pnpm install
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Installation de pnpm
+      run: npm install -g pnpm
+      
+    - name: Installation des dépendences
+      run: pnpm install
         
   test:
     runs-on: ubuntu-latest
