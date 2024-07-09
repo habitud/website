@@ -7,11 +7,11 @@ export default function Home() {
 
 	return (
 		
-		<div>
+		<>
 
 			<Header mode={Mode.landpage} />
 
 			<Hero />
-		</div>
+		</>
 	);
 }
