@@ -30,11 +30,11 @@ describe('Hero component', () => {
 
             const passActionLinkByText = screen.getByText('Passer à l\'action', { exact: false });
 			
-            expect(passActionLinkByText.closest('a')).toHaveAttribute('href', '/dashboard');
+            expect(passActionLinkByText.closest('a')).toHaveAttribute('href', 'https://app.habitud.fr');
         } 
 		else {
 
-            expect(passActionLink).toHaveAttribute('href', '/dashboard');
+            expect(passActionLink).toHaveAttribute('href', 'https://app.habitud.fr');
         }
     });
 });

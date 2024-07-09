@@ -34,7 +34,7 @@ export default function Hero(): JSX.Element {
 
                 <div className="mt-10 flex items-center justify-center gap-x-6">
 
-                    <Link href="/dashboard" className={buttonVariants({ variant: "black", size: "lg" })}>
+                    <Link href="https://app.habitud.fr" className={buttonVariants({ variant: "black", size: "lg" })}>
 
                         Passer à l'action
                     </Link>

@@ -45,7 +45,7 @@ describe('Header component', () => {
 
     describe('Button link', () => {
 
-        it('should point to "/dashboard" when in landpage mode', () => {
+        it('should point to "https://app.habitud.fr" when in landpage mode', () => {
 
             // Attempt to find the button link by accessible name first
             const passActionLink = screen.getByRole('link', { name: /passer à l'action/i });
@@ -55,11 +55,11 @@ describe('Header component', () => {
 
                 const passActionLinkByText = screen.getByText('Passer à l\'action', { exact: false });
 				
-                expect(passActionLinkByText.closest('a')).toHaveAttribute('href', '/dashboard');
+                expect(passActionLinkByText.closest('a')).toHaveAttribute('href', 'https://app.habitud.fr');
             } 
 			else {
 				
-                expect(passActionLink).toHaveAttribute('href', '/dashboard');
+                expect(passActionLink).toHaveAttribute('href', 'https://app.habitud.fr');
             }
         });
     });

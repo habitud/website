@@ -68,7 +68,7 @@ export default function Header({ mode }: Props): JSX.Element {
 
                     {mode === Mode.landpage ? (
 
-                        <Link href="/dashboard" className={buttonVariants({ variant: "black" })}>
+                        <Link href="https://app.habitud.fr" className={buttonVariants({ variant: "black" })}>
 
                             Passer à l'action
                         </Link>
