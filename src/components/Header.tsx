@@ -56,7 +56,7 @@ export default function Header({ mode }: Props): JSX.Element {
 
                 <div className="flex lg:flex-1">
 
-                    <Link href="/" className="-m-1.5 p-1.5">
+                    <Link href="https://habitud.fr" className="-m-1.5 p-1.5">
 
                         <span className="sr-only">habitud.fr</span>
 
