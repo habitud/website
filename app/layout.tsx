@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { PropsWithChildren } from "react";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,8 +22,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
 		<html lang="fr">
 
 			<body className={classes}>
+          
+		  		<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 			
-				{children}
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	);
