@@ -24,7 +24,7 @@ describe('Header component', () => {
 
     describe('Logo link', () => {
 
-        it('should point to "/"', () => {
+        it('should point to "https://habitud.fr"', () => {
 
             // Attempt to find the logo link by accessible name first
             const logoLink = screen.getByRole('link', { name: /habitud\.fr/i });
@@ -34,11 +34,11 @@ describe('Header component', () => {
 
                 const logoLinkByText = screen.getByText('habitud.fr', { exact: false });
 
-                expect(logoLinkByText.closest('a')).toHaveAttribute('href', '/');
+                expect(logoLinkByText.closest('a')).toHaveAttribute('href', 'https://habitud.fr');
             } 
 			else {
 
-                expect(logoLink).toHaveAttribute('href', '/');
+                expect(logoLink).toHaveAttribute('href', 'https://habitud.fr');
             }
         });
     });
