@@ -8,7 +8,6 @@ import { MoonIcon as MoonIconSolid, SunIcon as SunIconSolid } from '@heroicons/r
 import { useState } from 'react';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
-import logo from '@/public/logo.svg'
 
 /**
  * Enum defining different modes for the Header component.
@@ -61,7 +60,7 @@ export default function Header({ mode }: Props): JSX.Element {
 
                         <span className="sr-only">habitud.fr</span>
 
-                        <Image width={40} height={40} className="h-10 w-auto" src={logo} alt="logo" />
+                        <Image width={40} height={40} className="h-10 w-auto" src="/logo.svg" alt="logo" />
                     </Link>
                 </div>
 

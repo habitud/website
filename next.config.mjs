@@ -21,7 +21,7 @@ const nextConfig = {
             ]
         }
     },
-    assetPrefix: process.env.NODE_ENV === 'production' ? 'https://habitud.fr' : '',
+    assetPrefix: process.env.NODE_ENV === 'production' ? 'https://habitud.fr' : ''
   };
 
 export default nextConfig;

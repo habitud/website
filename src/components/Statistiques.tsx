@@ -1,11 +1,29 @@
 import Statistique from "./Statistique";
+import type {Statistique as Type} from "@/interfaces/Statistique";
 
-const stats = [
-    { name: 'Réussite globale', value: 32, change: 4.75 },
-    { name: 'Réussite quotidienne', value: 50, change: 54.02 },
-    { name: 'Réussite hebdomadaire', value: 28, change: -1.39 },
-    { name: 'Réussite mensuelle', value: 35, change: 10.18 }
-  ]
+const stats: Type[] = [
+
+    { 
+        name: 'Réussite globale', 
+        value: 32, 
+        change: 4.75 
+    },
+    { 
+        name: 'Réussite quotidienne', 
+        value: 50, 
+        change: 54.02 
+    },
+    { 
+        name: 'Réussite hebdomadaire', 
+        value: 28, 
+        change: -1.39 
+    },
+    { 
+        name: 'Réussite mensuelle', 
+        value: 35, 
+        change: 10.18 
+    }
+]
 
 export default function Statistiques() {
 

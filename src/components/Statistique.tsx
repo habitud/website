@@ -1,14 +1,8 @@
 import { cn } from "@/lib/utils";
 import { Card } from "./ui/card";
+import { Statistique } from "@/interfaces/Statistique";
 
-interface Props {
-
-    name: string;
-    value: number;
-    change: number;
-}
-
-export default function propsistique(props: Props) {
+export default function propsistique(props: Statistique) {
 
     return (
 
