@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: PropsWithChildren) {
 
-	const classes: string = cn(inter.className, "min-h-[100vh] flex flex-col")
+	const classes: string = cn(inter.className, "min-h-[100vh] flex flex-col bg-background")
 
 	return (
 

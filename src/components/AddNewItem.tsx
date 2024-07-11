@@ -32,7 +32,7 @@ export default function AddNewItem({ addNewItem }: { addNewItem: any }) {
 
             <DialogTrigger asChild>
 
-                <Button variant="outline" size="icon">
+                <Button variant="default" size="icon">
 
                     <Plus className="h-4 w-4" />
                 </Button>
