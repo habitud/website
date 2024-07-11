@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  assetPrefix: 'https://app.habitud.fr',
+  assetPrefix: 'https://habitud.fr',
   
   rewrites: async () => {
     return {
