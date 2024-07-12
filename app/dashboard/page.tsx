@@ -6,6 +6,7 @@ import Statistiques from "@/components/Statistiques";
 import { Calendar } from "@/components/ui/calendar";
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
+import { SessionProvider } from 'next-auth/react';
 
 export default function Page() {
 
@@ -20,25 +21,29 @@ export default function Page() {
     };
     return (
 
-        <div className="flex-1 flex flex-col">
-
-            <Header mode={Mode.dashboard} />
-
-            <div className="flex-1 flex flex-col px-3">
+        <SessionProvider>
 
 
-                <Statistiques />
+            <div className="flex-1 flex flex-col">
 
-                <div className="mx-auto max-w-7xl flex-1 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-3 w-full my-3 auto-rows-min">
+                <Header mode={Mode.dashboard} />
 
-                    <Habitudes date={date} />
+                <div className="flex-1 flex flex-col px-3">
 
-                    <Card className="col-span-1 flex justify-center items-center">
 
-                        <Calendar mode="single" selected={date} onSelect={handleSelectDate} weekStartsOn={1} firstWeekContainsDate={1} />
-                    </Card>
+                    <Statistiques />
+
+                    <div className="mx-auto max-w-7xl flex-1 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-3 w-full my-3 auto-rows-min">
+
+                        <Habitudes date={date} />
+
+                        <Card className="col-span-1 flex justify-center items-center">
+
+                            <Calendar mode="single" selected={date} onSelect={handleSelectDate} weekStartsOn={1} firstWeekContainsDate={1} />
+                        </Card>
+                    </div>
                 </div>
             </div>
-        </div>
+        </SessionProvider>
     );
 }
