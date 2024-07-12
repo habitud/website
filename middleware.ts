@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+export { auth as md } from "@/lib/auth"
 
 export function middleware(request: NextRequest) {
+
     const hostname = request.headers.get('host');
 
     // Define your subdomains

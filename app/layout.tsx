@@ -22,9 +22,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
 		<html lang="fr">
 
 			<body className={classes}>
-          
-		  		<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-			
+
+				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+
 					{children}
 				</ThemeProvider>
 			</body>

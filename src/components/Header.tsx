@@ -1,13 +1,15 @@
 "use client"
 
 import Link from 'next/link';
-import { Button, buttonVariants } from './ui/button';
+import { Button } from './ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { MoonIcon as MoonIconOutline, SunIcon as SunIconOutline } from '@heroicons/react/24/outline';
 import { MoonIcon as MoonIconSolid, SunIcon as SunIconSolid } from '@heroicons/react/20/solid';
 import { useState } from 'react';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
+import { SignInButton } from './SignInButton';
+import { useSession } from 'next-auth/react';
 
 /**
  * Enum defining different modes for the Header component.
@@ -44,6 +46,8 @@ interface Props {
  */
 export default function Header({ mode }: Props): JSX.Element {
 
+    const session = useSession();
+
     const { theme, setTheme } = useTheme();
 
     const [isHovered, setIsHovered] = useState(false);
@@ -68,10 +72,7 @@ export default function Header({ mode }: Props): JSX.Element {
 
                     {mode === Mode.landpage ? (
 
-                        <Link href="https://app.habitud.fr" className={buttonVariants({ variant: "black" })}>
-
-                            Passer à l'action
-                        </Link>
+                        <SignInButton text="Passer à l'action" />
                     ) : (
 
                         <div className='flex items-center gap-4'>
@@ -92,7 +93,8 @@ export default function Header({ mode }: Props): JSX.Element {
 
                             <Avatar>
 
-                                <AvatarImage src="https://github.com/shadcn.png" />
+                                <AvatarImage src={session?.data?.user?.image || 'https://github.com/shadcn.png'} />
+
 
                                 <AvatarFallback>CN</AvatarFallback>
                             </Avatar>
