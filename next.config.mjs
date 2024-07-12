@@ -1,25 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-
-    rewrites() {
-
-        return {
-
-            beforeFiles: [
-                
-                {
-                    source: '/:path*',
-                    has: [
-
-                        {
-                            type: 'host',
-                            value: 'app.habitud.fr',
-                        }
-                    ],
-                    destination: '/dashboard/:path*'
-                }
-            ]
-        }
+    async rewrites() {
+        return [
+            {
+                source: '/_next/static/:path*',
+                destination: '/_next/static/:path*',
+            },
+            {
+                source: '/:path*',
+                has: [
+                    {
+                        type: 'host',
+                        value: 'app.habitud.fr',
+                    }
+                ],
+                destination: '/dashboard/:path*'
+            }
+        ]
     }
 };
 
