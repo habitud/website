@@ -1,28 +1,32 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     async rewrites() {
-        return {
-            afterFiles: [
-                {
-                    source: '/_next/static/:path*',
-                    destination: '/_next/static/:path*',
-                },
-                {
-                    source: '/logo.svg',
-                    destination: '/logo.svg',
-                },
-                {
-                    source: '/:path*',
-                    has: [
-                        {
-                            type: 'host',
-                            value: 'app.habitud.fr',
-                        }
-                    ],
-                    destination: '/dashboard/:path*'
-                }
-            ]
-        }
+        return [
+            {
+                source: '/_next/:path*',
+                destination: '/_next/:path*',
+            },
+            {
+                source: '/:path*',
+                has: [
+                    {
+                        type: 'host',
+                        value: 'app.habitud.fr',
+                    }
+                ],
+                destination: '/dashboard/:path*'
+            },
+            {
+                source: '/:path*',
+                has: [
+                    {
+                        type: 'host',
+                        value: 'habitud.fr',
+                    }
+                ],
+                destination: '/:path*'
+            }
+        ];
     }
 };
 
