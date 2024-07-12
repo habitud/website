@@ -20,6 +20,13 @@ const nextConfig = {
                 }
             ]
         }
+    },
+    assetPrefix: () => {
+
+      if (process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_DOMAIN === 'app.habitud.fr') {
+
+            return 'https://habitud.fr';
+        }
     }
 };
 
