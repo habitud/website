@@ -7,14 +7,14 @@ const nextConfig = {
                 destination: '/_next/:path*',
             },
             {
-                source: '/:path*',
+                source: '/dashboard/:path*',
                 has: [
                     {
                         type: 'host',
                         value: 'app.habitud.fr',
                     }
                 ],
-                destination: '/dashboard/:path*'
+                destination: '/:path*'
             },
             {
                 source: '/:path*',
