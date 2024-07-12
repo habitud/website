@@ -23,7 +23,6 @@ export default function Page() {
 
         <SessionProvider>
 
-
             <div className="flex-1 flex flex-col">
 
                 <Header mode={Mode.dashboard} />
