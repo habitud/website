@@ -21,14 +21,7 @@ const nextConfig = {
             ]
         }
     },
-    assetPrefix: () => {
-
-        if (process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_DOMAIN === 'app.habitud.fr') {
-            
-            return 'https://app.habitud.fr';
-        }
-        return '';
-    },
+    assetPrefix: (process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_DOMAIN === 'app.habitud.fr') ?'https://app.habitud.fr': ''
 };
 
 export default nextConfig;
