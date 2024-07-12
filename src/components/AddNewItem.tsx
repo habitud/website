@@ -15,7 +15,7 @@ export default function AddNewItem({ addNewItem }: { addNewItem: any }) {
         if (itemName.trim() === "") return;
 
         addNewItem(itemName);
-        
+
         setItemName("");
 
         setOpen(false);
@@ -23,7 +23,7 @@ export default function AddNewItem({ addNewItem }: { addNewItem: any }) {
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
 
-        if (event.key === 'Enter')  handleSubmit();
+        if (event.key === 'Enter') handleSubmit();
     };
 
     return (
@@ -32,31 +32,31 @@ export default function AddNewItem({ addNewItem }: { addNewItem: any }) {
 
             <DialogTrigger asChild>
 
-                <Button variant="default" size="icon">
+                <Button variant="outline" size="icon">
 
                     <Plus className="h-4 w-4" />
                 </Button>
             </DialogTrigger>
 
             <DialogContent className="sm:max-w-[425px]">
-            
+
                 <DialogHeader className="text-start">
-            
+
                     <DialogTitle>Ajouter une habitude</DialogTitle>
-            
+
                     <DialogDescription>
-            
+
                         Veuillez renseigner le nom de votre nouvelle habitude
                     </DialogDescription>
                 </DialogHeader>
-            
+
                 <div className="grid gap-4 pt-2">
-            
+
                     <Input id="name" value={itemName} onChange={(e: any) => setItemName(e.target.value)} onKeyDown={handleKeyDown} />
                 </div>
 
                 <DialogFooter>
-                    
+
                     <Button onClick={handleSubmit} className="w-full">Ajouter</Button>
                 </DialogFooter>
             </DialogContent>

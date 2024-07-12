@@ -8,20 +8,20 @@ import { Card } from "@/components/ui/card";
 import { useState } from "react";
 
 export default function Page() {
-    
+
     const [date, setDate] = useState<Date>(new Date());
 
     const handleSelectDate = (selectedDate: Date | undefined) => {
 
         if (selectedDate) {
-        
+
             setDate(selectedDate);
         }
     };
     return (
 
         <div className="flex-1 flex flex-col">
-        
+
             <Header mode={Mode.dashboard} />
 
             <div className="flex-1 flex flex-col px-3">
@@ -29,7 +29,7 @@ export default function Page() {
 
                 <Statistiques />
 
-                <div className="mx-auto max-w-7xl flex-1 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-3 w-full my-3">
+                <div className="mx-auto max-w-7xl flex-1 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-3 w-full my-3 auto-rows-min">
 
                     <Habitudes date={date} />
 
