@@ -6,7 +6,7 @@ export function middleware(request: NextRequest) {
 
     // Define your subdomains
     const appDomain = 'app.habitud.fr';
-    const mainDomain = 'habitud.fr';
+    //const mainDomain = 'habitud.fr';
 
     if (hostname === appDomain) {
         // Rewrite all requests from app.habitud.fr to /dashboard
