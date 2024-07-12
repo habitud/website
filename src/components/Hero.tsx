@@ -33,7 +33,7 @@ export default function Hero(): JSX.Element {
 
                 <div className="mt-10 flex items-center justify-center gap-x-6">
 
-                    <SignInButton text="Passer à l'action" />
+                    <SignInButton text="Passer à l'action" size="lg" />
                 </div>
             </div>
         </div>

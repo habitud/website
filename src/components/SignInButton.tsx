@@ -4,13 +4,14 @@ import { Button } from "./ui/button"
 interface Props {
 
     text: string;
+    size?: "default" | "sm" | "lg" | "icon" | null;
 }
 
-export function SignInButton({ text }: Props) {
+export function SignInButton({ text, size = "default" }: Props) {
 
     return (
 
-        <Button variant="black" onClick={() => signIn("google", { redirect: true, callbackUrl: "/dashboard" })}>
+        <Button size={size} variant="black" onClick={() => signIn("google", { redirect: true, callbackUrl: "/dashboard" })}>
 
             {text}
         </Button>
