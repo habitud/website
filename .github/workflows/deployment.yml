@@ -35,7 +35,7 @@ jobs:
         run: pnpm install
 
       - name: Generate Prisma Client
-        run: pnpm prisma generate
+        run: npx prisma generate
         
       - name: Install Vercel CLI
         run: pnpm add --global vercel@latest
