@@ -60,7 +60,7 @@ export default function Header({ mode }: Props): JSX.Element {
 
                         <span className="sr-only">habitud.fr</span>
 
-                        <Image width={40} height={40} className="h-10 w-auto" src="/logo.svg" alt="logo" />
+                        <Image width={40} height={40} className="h-10 w-auto" src="https://www.habitud.fr/logo.svg" alt="logo" />
                     </Link>
                 </div>
 
@@ -85,7 +85,7 @@ export default function Header({ mode }: Props): JSX.Element {
                             ) : (
 
                                 <Button variant="ghost" size="icon" onClick={() => setTheme("light")} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-                                
+
                                     {isHovered ? <MoonIconSolid width={24} height={24} /> : <MoonIconOutline width={24} height={24} />}
                                 </Button>
                             )}
