@@ -77,3 +77,9 @@ model Authenticator {
  
   @@id([userId, credentialID])
 }
+
+model Habitude {
+
+  id    Int    @id @default(autoincrement())
+  label String
+}

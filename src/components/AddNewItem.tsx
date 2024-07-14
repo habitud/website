@@ -10,16 +10,29 @@ export default function AddNewItem({ addNewItem }: { addNewItem: any }) {
 
     const [open, setOpen] = React.useState(false);
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
 
         if (itemName.trim() === "") return;
 
-        addNewItem(itemName);
+        const response = await fetch('/api/habitude/create', {
+
+            method: 'POST',
+            headers: {
+
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ label: itemName })
+        });
+
+        const json = await response.json();
+
+        addNewItem(json.habitude);
 
         setItemName("");
 
         setOpen(false);
     };
+
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
 

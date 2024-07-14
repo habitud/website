@@ -3,7 +3,7 @@
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { restrictToVerticalAxis, restrictToParentElement } from '@dnd-kit/modifiers';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SortableLinks from '@/components/SortableLinks';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import AddNewItem from '@/components/AddNewItem';
@@ -15,7 +15,7 @@ moment.locale('fr');
 
 
 interface Props {
-	
+
 	date: Date;
 }
 
@@ -25,22 +25,12 @@ export default function Habitudes(props: Props) {
 
 		useSensor(PointerSensor),
 		useSensor(KeyboardSensor, {
-			
+
 			coordinateGetter: sortableKeyboardCoordinates,
 		})
 	);
 
-	const [items, setItems] = useState<Habitude[]>([
-		
-		{
-			id: 1,
-			label: "Réveil 6h30"
-		},
-		{
-			id: 2,
-			label: "Marcher 10km"
-		}
-	]);
+	const [items, setItems] = useState<Habitude[]>([]);
 
 	function handleDragEnd(event: any) {
 
@@ -56,18 +46,42 @@ export default function Habitudes(props: Props) {
 		}
 	}
 
-	function handleDelete(idToDelete: number) {
+	async function handleDelete(idToDelete: number) {
+
+		await fetch('/api/habitude/delete', {
+
+			method: 'DELETE',
+			headers: {
+
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ id: idToDelete })
+		})
+
 		setItems((prevItems) => prevItems.filter((item) => item.id !== idToDelete));
 	}
 
-	let idx = Date.now();
+	function addNewItem(newHabitude: Habitude) {
 
-	function addNewItem(newItem: string) {
-		setItems((prevItems) => [...prevItems, { id: idx, label: newItem }]);
+		setItems((prevItems) => [...prevItems, newHabitude]);
 	}
 
 	const formattedDate = moment(props.date).format('dddd D MMMM YYYY');
 	const capitalizedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+
+	useEffect(() => {
+
+		const fetchHabitudes = async () => {
+
+			const response = await fetch('/api/habitude');
+
+			const data = await response.json();
+
+			setItems(data.data);
+		};
+
+		fetchHabitudes();
+	}, []);
 
 	return (
 
@@ -76,20 +90,23 @@ export default function Habitudes(props: Props) {
 			<CardHeader className='space-y-1 '>
 
 				<CardTitle className='text-2xl flex justify-between'>
+
 					{capitalizedDate}
+
 					<AddNewItem addNewItem={addNewItem} />
 				</CardTitle>
-				<CardDescription>List Popular web development frameworks</CardDescription>
+
+				<CardDescription>Mes habitudes</CardDescription>
 			</CardHeader>
+
 			<CardContent className='grid gap-4'>
-				<DndContext
-					sensors={sensors}
-					collisionDetection={closestCenter}
-					onDragEnd={handleDragEnd}
-					modifiers={[restrictToVerticalAxis, restrictToParentElement]}
-				>
+
+				<DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd} modifiers={[restrictToVerticalAxis, restrictToParentElement]}>
+
 					<SortableContext items={items} strategy={verticalListSortingStrategy}>
+
 						{items.map((item) => (
+
 							<SortableLinks key={item.id} id={item} onDelete={handleDelete} />
 						))}
 					</SortableContext>
