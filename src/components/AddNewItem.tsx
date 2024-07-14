@@ -26,7 +26,7 @@ export default function AddNewItem({ addNewItem }: { addNewItem: any }) {
 
         const json = await response.json();
 
-        addNewItem(json.habitude);
+        addNewItem(json.habitude.label);
 
         setItemName("");
 

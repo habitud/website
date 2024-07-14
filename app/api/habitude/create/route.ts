@@ -11,7 +11,8 @@ export async function POST(request: NextRequest) {
 
         data: {
 
-            label: body.label
+            label: body.label,
+            userId: body.userId
         }
     });
 
