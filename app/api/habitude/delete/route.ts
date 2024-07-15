@@ -11,7 +11,8 @@ export async function DELETE(request: NextRequest) {
 
         where: {
 
-            id: body.id
+            id: body.id,
+            userId: body.userId
         }
     })
 

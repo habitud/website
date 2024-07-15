@@ -4,6 +4,7 @@ import "./globals.css";
 import { PropsWithChildren } from "react";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "next-themes";
+import { SessionProvider } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,10 +24,14 @@ export default function RootLayout({ children }: PropsWithChildren) {
 
 			<body className={classes}>
 
-				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+				<SessionProvider>
 
-					{children}
-				</ThemeProvider>
+					<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+
+						{children}
+					</ThemeProvider>
+
+				</SessionProvider>
 			</body>
 		</html>
 	);

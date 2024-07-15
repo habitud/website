@@ -80,8 +80,20 @@ model Authenticator {
 }
 
 model Habitude {
-  id     Int    @id @default(autoincrement())
-  label  String
-  userId String
-  user   User   @relation(fields: [userId], references: [id])
+  id      Int       @id @default(autoincrement())
+  label   String
+  userId  String
+  user    User      @relation(fields: [userId], references: [id])
+  History History[]
+}
+
+model History {
+  id Int @id @default(autoincrement())
+
+  habitudeId Int
+  habitude   Habitude @relation(fields: [habitudeId], references: [id])
+  date       DateTime
+  status     Boolean
+
+  @@unique([habitudeId, date])
 }

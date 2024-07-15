@@ -10,6 +10,7 @@ import AddNewItem from '@/components/AddNewItem';
 import Habitude from '@/interfaces/Habitude';
 import moment from "moment"
 import 'moment/locale/fr';
+import { useSession } from 'next-auth/react';
 
 moment.locale('fr');
 
@@ -20,6 +21,8 @@ interface Props {
 }
 
 export default function Habitudes(props: Props) {
+
+    const session = useSession();
 
 	const sensors = useSensors(
 
@@ -55,7 +58,11 @@ export default function Habitudes(props: Props) {
 
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ id: idToDelete })
+			body: JSON.stringify({ 
+				
+				id: idToDelete,
+				userId: session.data?.user?.id
+			})
 		})
 
 		setItems((prevItems) => prevItems.filter((item) => item.id !== idToDelete));
@@ -73,7 +80,18 @@ export default function Habitudes(props: Props) {
 
 		const fetchHabitudes = async () => {
 
-			const response = await fetch('/api/habitude');
+			const response = await fetch('/api/habitude', {
+	
+				method: 'POST',
+				headers: {
+	
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ 
+					
+					userId: session.data?.user?.id
+				})
+			})
 
 			const data = await response.json();
 

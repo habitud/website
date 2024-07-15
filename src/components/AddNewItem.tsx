@@ -2,9 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Plus } from "lucide-react";
+import { useSession } from "next-auth/react";
 import React from 'react';
 
 export default function AddNewItem({ addNewItem }: { addNewItem: any }) {
+
+    const session = useSession();
 
     const [itemName, setItemName] = React.useState("");
 
@@ -21,7 +24,11 @@ export default function AddNewItem({ addNewItem }: { addNewItem: any }) {
 
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ label: itemName })
+            body: JSON.stringify({ 
+                
+                label: itemName, 
+                userId: session.data?.user?.id 
+            })
         });
 
         const json = await response.json();

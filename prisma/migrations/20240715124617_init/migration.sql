@@ -71,6 +71,16 @@ CREATE TABLE "Habitude" (
     CONSTRAINT "Habitude_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "History" (
+    "id" SERIAL NOT NULL,
+    "habitudeId" INTEGER NOT NULL,
+    "date" TIMESTAMP(3) NOT NULL,
+    "status" BOOLEAN NOT NULL,
+
+    CONSTRAINT "History_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
@@ -79,6 +89,9 @@ CREATE UNIQUE INDEX "Session_sessionToken_key" ON "Session"("sessionToken");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Authenticator_credentialID_key" ON "Authenticator"("credentialID");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "History_habitudeId_date_key" ON "History"("habitudeId", "date");
 
 -- AddForeignKey
 ALTER TABLE "Account" ADD CONSTRAINT "Account_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -91,3 +104,6 @@ ALTER TABLE "Authenticator" ADD CONSTRAINT "Authenticator_userId_fkey" FOREIGN K
 
 -- AddForeignKey
 ALTER TABLE "Habitude" ADD CONSTRAINT "Habitude_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "History" ADD CONSTRAINT "History_habitudeId_fkey" FOREIGN KEY ("habitudeId") REFERENCES "Habitude"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

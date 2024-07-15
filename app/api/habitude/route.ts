@@ -4,30 +4,20 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
-export async function GET() {
-
-    const habitudes: Habitude[] = await prisma.habitude.findMany();
-
-    return NextResponse.json({
-
-        data: habitudes
-    });
-}
-
 export async function POST(request: NextRequest) {
 
     const body = await request.json();
 
-    const habitude: Habitude = await prisma.habitude.findUnique({
+    const habitudes: Habitude[] = await prisma.habitude.findMany({
 
         where: {
 
-            id: body.id
+            userId: body.userId
         }
     });
 
     return NextResponse.json({
 
-        data: habitude
+        data: habitudes
     });
 }
