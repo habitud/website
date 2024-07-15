@@ -24,16 +24,16 @@ export default function AddNewItem({ addNewItem }: { addNewItem: any }) {
 
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ 
-                
-                label: itemName, 
-                userId: session.data?.user?.id 
+            body: JSON.stringify({
+
+                label: itemName,
+                userId: session.data?.user?.id
             })
         });
 
         const json = await response.json();
 
-        addNewItem(json.habitude.label);
+        addNewItem(json.habitude);
 
         setItemName("");
 

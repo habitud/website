@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
@@ -8,7 +9,7 @@ export const config = {
     schedule: '0 0 * * *'
 }
 
-export default async function handler() {
+export async function GET() {
 
     const habitudes = await prisma.habitude.findMany();
 
@@ -26,10 +27,8 @@ export default async function handler() {
         skipDuplicates: true
     })
 
-    return Response.json({
+    return NextResponse.json({
 
         message: "Insertion quotidienne réalisée avec succès"
     })
 }
-
-  

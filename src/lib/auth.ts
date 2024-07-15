@@ -9,5 +9,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
     adapter: PrismaAdapter(prisma),
     providers: [Google],
-    secret: process.env.AUTH_SECRET
+    secret: process.env.AUTH_SECRET,
+    callbacks: {
+
+        session({ session, token, user }) {
+
+            return session
+        }
+    }
 })
